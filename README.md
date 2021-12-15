@@ -2,8 +2,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/shaochuancs/latex-server/badge.svg?branch=master)](https://coveralls.io/github/shaochuancs/latex-server?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ac9b8f9a99b2434da8aa/maintainability)](https://codeclimate.com/github/shaochuancs/latex-server/maintainability)
 
-# latex-server
-Web application providing LaTeX typesetting service
+# web-boilerplate
+Web application boilerplate
 
 ## Launch
 1. Install pm2 globally (if not yet): `npm install -g pm2`
