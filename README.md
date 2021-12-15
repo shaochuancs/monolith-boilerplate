@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/shaochuancs/latex-server/tree/master.svg?style=svg)](https://circleci.com/gh/shaochuancs/latex-server/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/shaochuancs/latex-server/badge.svg?branch=master)](https://coveralls.io/github/shaochuancs/latex-server?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ac9b8f9a99b2434da8aa/maintainability)](https://codeclimate.com/github/shaochuancs/latex-server/maintainability)
+[![CircleCI](https://circleci.com/gh/shaochuancs/web-boilerplate/tree/master.svg?style=svg)](https://circleci.com/gh/shaochuancs/web-boilerplate/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/shaochuancs/web-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/shaochuancs/web-boilerplate?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5b299dea8db6ee5f041a/maintainability)](https://codeclimate.com/github/shaochuancs/web-boilerplate/maintainability)
 
 # web-boilerplate
 Web application boilerplate
