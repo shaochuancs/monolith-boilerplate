@@ -1,7 +1,7 @@
 {
-  "name": "web-boilerplate",
+  "name": "monolith-boilerplate",
   "version": "1.0.0",
-  "description": "Web application boilerplate",
+  "description": "Monolithic web application boilerplate",
   "scripts": {
     "build": "npx webpack",
     "buildDev": "npx webpack --watch",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaochuancs/web-boilerplate.git"
+    "url": "git+https://github.com/shaochuancs/monolith-boilerplate.git"
   },
   "keywords": [
     "Web"
@@ -20,9 +20,9 @@
   "author": "Chuan Shao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shaochuancs/web-boilerplate/issues"
+    "url": "https://github.com/shaochuancs/monolith-boilerplate/issues"
   },
-  "homepage": "https://github.com/shaochuancs/web-boilerplate#readme",
+  "homepage": "https://github.com/shaochuancs/monolith-boilerplate#readme",
   "dependencies": {
     "esserializer": "^1.2.4",
     "express": "^4.17.1",
