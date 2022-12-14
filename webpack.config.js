@@ -1,4 +1,5 @@
 const path = require('path');
+const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 
 const regExpExpressionDependency = /Critical dependency: the request of a dependency is an expression/;
 
@@ -19,6 +20,11 @@ module.exports = {
       exclude: /node_modules/
     }]
   },
+  plugins: [
+    new ESLintWebpackPlugin({
+      extensions: ['ts', 'js']
+    })
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
