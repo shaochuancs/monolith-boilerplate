@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npx webpack",
     "buildDev": "npx webpack --watch",
+    "prebuild": "npx htmlhint src-backend/views/**/*.html",
     "start": "node dist/bundle.js",
     "startDev": "nodemon --watch dist/bundle.js dist/bundle.js",
     "test": "TZ=UTC npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
@@ -42,7 +43,9 @@
     "coveralls": "^3.1.1",
     "eslint": "^8.28.0",
     "eslint-webpack-plugin": "^3.2.0",
+    "htmlhint": "^1.1.4",
     "jest": "^29.3.1",
+    "node-loader": "^2.0.0",
     "nodemon": "^2.0.15",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",

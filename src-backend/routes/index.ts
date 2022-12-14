@@ -9,9 +9,7 @@ import {Request, Response, Router} from "express";
 const router = Router();
 
 router.get('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello, world'
-  });
+  res.render('index.html');
 });
 
 export default router;
