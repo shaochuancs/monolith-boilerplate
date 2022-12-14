@@ -1,5 +1,7 @@
-const path = require('path');
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+const path = require('path');
 
 const regExpExpressionDependency = /Critical dependency: the request of a dependency is an expression/;
 
@@ -21,9 +23,9 @@ module.exports = {
     }]
   },
   plugins: [
-    new ESLintWebpackPlugin({
-      extensions: ['ts', 'js']
-    })
+    new CleanWebpackPlugin(),
+    new CopyPlugin({patterns: [{from: 'src-backend/views', to: 'views'}]}),
+    new ESLintWebpackPlugin({extensions: ['ts', 'js']})
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
