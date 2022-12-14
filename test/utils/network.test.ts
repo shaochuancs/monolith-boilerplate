@@ -7,7 +7,7 @@
 import {
   generateAccessRecord,
   parsePort
-} from "../../src/utils/network";
+} from "../../src-backend/utils/network";
 
 describe('Test network utils', ()=>{
   test('Should generate access record successfully', ()=>{

@@ -3,7 +3,7 @@ const path = require('path');
 const regExpExpressionDependency = /Critical dependency: the request of a dependency is an expression/;
 
 module.exports = {
-  entry: './src/main.ts',
+  entry: './src-backend/main.ts',
   ignoreWarnings: [{
     module: /log4js/,
     message: regExpExpressionDependency
