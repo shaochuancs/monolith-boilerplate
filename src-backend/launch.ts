@@ -10,10 +10,6 @@ import router from "./routes";
 import {generateAccessRecord} from "./utils/network";
 
 const express = require('express');
-const nunjucks = require('nunjucks');
-const path = require('path');
-
-const isDevMode = process.env.NODE_ENV === 'development';
 
 /**
  * Launch server
@@ -21,16 +17,6 @@ const isDevMode = process.env.NODE_ENV === 'development';
 function launch(): void {
   const app = express();
   app.set('trust proxy', true);
-
-  const nunjucksConf:any = {
-    autoescape: true,
-    express: app
-  };
-  if (isDevMode) {
-    nunjucksConf.watch = true;
-    nunjucksConf.noCache = true;
-  }
-  nunjucks.configure(path.join(__dirname, 'views'), nunjucksConf);
 
   app.use((req, res, next)=>{
     req.on('end', ()=>{

@@ -1,5 +1,4 @@
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const path = require('path');
 
@@ -16,11 +15,7 @@ module.exports = {
   }],
   mode: process.env.NODE_ENV,
   module: {
-    rules: [
-      {
-        test: /\.node$/,
-        use: 'node-loader'
-      }, {
+    rules: [{
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
@@ -28,7 +23,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin({patterns: [{from: 'src-backend/views', to: 'views'}]}),
     new ESLintWebpackPlugin({extensions: ['ts', 'js']})
   ],
   resolve: {
