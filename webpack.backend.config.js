@@ -26,7 +26,7 @@ module.exports = {
     new ESLintWebpackPlugin({extensions: ['ts', 'js']})
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   target: 'node',
   output: {
