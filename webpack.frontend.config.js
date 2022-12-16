@@ -2,21 +2,12 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const path = require('path');
 
-const regExpExpressionDependency = /Critical dependency: the request of a dependency is an expression/;
-
 module.exports = {
-  entry: './src-backend/main.ts',
-  ignoreWarnings: [{
-    module: /log4js/,
-    message: regExpExpressionDependency
-  },{
-    module: /express/,
-    message: regExpExpressionDependency
-  }],
+  entry: './src-frontend/main.tsx',
   mode: process.env.NODE_ENV,
   module: {
     rules: [{
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
     }]
@@ -26,11 +17,10 @@ module.exports = {
     new ESLintWebpackPlugin({extensions: ['ts', 'js']})
   ],
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.tsx', '.ts', 'jsx', 'js']
   },
-  target: 'node',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/backend')
+    path: path.resolve(__dirname, 'dist/frontend')
   }
 };

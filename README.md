@@ -8,4 +8,4 @@ Monolithic web application boilerplate
 ## Launch
 1. Install pm2 globally (if not yet): `npm install -g pm2`
 2. Install pm2-intercom to support logger in cluster mode: `pm2 install pm2-intercom`
-3. Start app: `pm2 start dist/bundle.js --name app -i max`
+3. Start app: `pm2 start dist/backend/bundle.js --name app -i max`

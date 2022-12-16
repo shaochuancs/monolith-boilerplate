@@ -13,7 +13,7 @@ const log4js = require('log4js');
 function configure() {
   ConfigService.setConfig('PORT', parsePort(process.env.PORT));
   ConfigService.setConfig('SECRET', process.env.SECRET);
-  log4js.configure(path.resolve(__dirname, '../config/log4js.json'));
+  log4js.configure(path.resolve(__dirname, '../../config/log4js.json'));
 }
 
 export default configure;
