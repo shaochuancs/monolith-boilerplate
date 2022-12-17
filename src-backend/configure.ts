@@ -5,7 +5,7 @@
 'use strict';
 
 import ConfigService from "./service/ConfigService";
-import {parsePort} from "./utils/network";
+import {parsePort} from "./util/network";
 
 const path = require('path');
 const log4js = require('log4js');

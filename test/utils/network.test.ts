@@ -7,9 +7,9 @@
 import {
   generateAccessRecord,
   parsePort
-} from "../../src-backend/utils/network";
+} from "../../src-backend/util/network";
 
-describe('Test network utils', ()=>{
+describe('Test network util', ()=>{
   test('Should generate access record successfully', ()=>{
     const reqMock = {
       ip: '127.0.0.1',

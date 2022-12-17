@@ -6,8 +6,8 @@
 
 import Logger from './logger/Logger';
 import ConfigService from "./service/ConfigService";
-import router from "./routes";
-import {generateAccessRecord} from "./utils/network";
+import router from "./route";
+import {generateAccessRecord} from "./util/network";
 
 const express = require('express');
 
