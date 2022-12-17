@@ -7,8 +7,8 @@
     "buildBackendDev": "npx webpack --config webpack.backend.config.js --watch",
     "buildFrontend": "npx webpack --config webpack.frontend.config.js",
     "buildFrontendDev": "npx webpack --config webpack.frontend.config.js --watch",
-    "start": "node dist/backend/bundle.js",
-    "startDev": "nodemon --watch dist/backend/bundle.js dist/backend/bundle.js",
+    "start": "node dist/server/bundle.js",
+    "startDev": "nodemon --watch dist/server/bundle.js dist/server/bundle.js",
     "test": "TZ=UTC npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "dependencies": {
     "esserializer": "^1.2.4",
     "express": "^4.17.1",
+    "express-handlebars": "^6.0.6",
     "log4js": "^6.3.0",
     "moment": "^2.29.1",
     "react": "^18.2.0",

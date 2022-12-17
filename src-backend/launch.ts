@@ -4,12 +4,15 @@
 
 'use strict';
 
+import { engine } from 'express-handlebars';
+
 import Logger from './logger/Logger';
 import ConfigService from "./service/ConfigService";
 import router from "./route";
 import {generateAccessRecord} from "./util/network";
 
 const express = require('express');
+const path = require('path');
 
 /**
  * Launch server
@@ -17,6 +20,10 @@ const express = require('express');
 function launch(): void {
   const app = express();
   app.set('trust proxy', true);
+
+  app.engine('handlebars', engine());
+  app.set('view engine', 'handlebars');
+  app.set('views', path.resolve(__dirname, '../view'));
 
   app.use((req, res, next)=>{
     req.on('end', ()=>{

@@ -17,7 +17,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new ESLintWebpackPlugin({extensions: ['ts', 'js']}),
     new HtmlWebpackPlugin({
-      template: 'src-backend/view/index.html'
+      filename: 'index.handlebars',
+      template: 'src-backend/view/index.handlebars'
     })
   ],
   resolve: {
@@ -25,6 +26,6 @@ module.exports = {
   },
   output: {
     filename: '[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist/frontend')
+    path: path.resolve(__dirname, 'dist/view')
   }
 };

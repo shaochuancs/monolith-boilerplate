@@ -26,11 +26,12 @@ module.exports = {
     new ESLintWebpackPlugin({extensions: ['ts', 'js']})
   ],
   resolve: {
+    alias: {'handlebars': 'handlebars/dist/handlebars.js'},
     extensions: ['.ts', '.js']
   },
   target: 'node',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/backend')
+    path: path.resolve(__dirname, 'dist/server')
   }
 };
