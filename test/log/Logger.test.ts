@@ -6,7 +6,7 @@
 
 const log4js = require('log4js');
 
-import Logger from '../../src/logger/Logger';
+import Logger from '../../src-backend/logger/Logger';
 
 const exampleLogMessage = 'example logger message';
 

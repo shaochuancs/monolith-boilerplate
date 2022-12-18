@@ -1,18 +1,17 @@
 {
-  "name": "web-boilerplate",
+  "name": "monolith-boilerplate",
   "version": "1.0.0",
-  "description": "Web application boilerplate",
+  "description": "Monolithic web application boilerplate",
   "scripts": {
-    "build": "npx webpack",
-    "buildDev": "npx webpack --watch",
-    "start": "node dist/bundle.js",
-    "startDev": "nodemon --watch dist/bundle.js dist/bundle.js",
-    "pretest": "npx eslint --ext .ts,.js ./",
+    "build": "npm run buildBackend && npm run buildFrontend",
+    "buildBackend": "npx webpack --config webpack.backend.config.js",
+    "buildFrontend": "npx webpack --config webpack.frontend.config.js",
+    "start": "node dist/server/bundle.js",
     "test": "TZ=UTC npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaochuancs/web-boilerplate.git"
+    "url": "git+https://github.com/shaochuancs/monolith-boilerplate.git"
   },
   "keywords": [
     "Web"
@@ -20,25 +19,32 @@
   "author": "Chuan Shao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shaochuancs/web-boilerplate/issues"
+    "url": "https://github.com/shaochuancs/monolith-boilerplate/issues"
   },
-  "homepage": "https://github.com/shaochuancs/web-boilerplate#readme",
+  "homepage": "https://github.com/shaochuancs/monolith-boilerplate#readme",
   "dependencies": {
     "esserializer": "^1.2.4",
     "express": "^4.17.1",
+    "express-handlebars": "^6.0.6",
     "log4js": "^6.3.0",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.16.0",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "babel-jest": "^27.4.4",
+    "clean-webpack-plugin": "^4.0.0",
     "coveralls": "^3.1.1",
     "eslint": "^8.28.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^29.3.1",
     "nodemon": "^2.0.15",
     "ts-loader": "^9.2.6",

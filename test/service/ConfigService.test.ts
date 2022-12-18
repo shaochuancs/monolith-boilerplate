@@ -4,7 +4,7 @@
 
 'use strict';
 
-import ConfigService from "../../src/service/ConfigService";
+import ConfigService from "../../src-backend/service/ConfigService";
 
 describe('Test ConfigService', ()=>{
   test('can set config and then read value', ()=>{
