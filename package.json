@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Monolithic web application boilerplate",
   "scripts": {
+    "build": "npm run buildBackend && npm run buildFrontend",
     "buildBackend": "npx webpack --config webpack.backend.config.js",
-    "buildBackendDev": "npx webpack --config webpack.backend.config.js --watch",
     "buildFrontend": "npx webpack --config webpack.frontend.config.js",
-    "buildFrontendDev": "npx webpack --config webpack.frontend.config.js --watch",
     "start": "node dist/server/bundle.js",
-    "startDev": "nodemon --watch dist/server/bundle.js dist/server/bundle.js",
     "test": "TZ=UTC npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
   },
   "repository": {

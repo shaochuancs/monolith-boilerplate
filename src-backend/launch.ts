@@ -32,6 +32,7 @@ function launch(): void {
     next();
   });
   app.use('/', router);
+  app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
   app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
     Logger.error(err);
     res.status(500).send(err.message);

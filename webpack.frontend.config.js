@@ -25,7 +25,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', 'jsx', 'js']
   },
   output: {
-    filename: '[contenthash].bundle.js',
+    filename: 'static/[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist/view')
   }
 };

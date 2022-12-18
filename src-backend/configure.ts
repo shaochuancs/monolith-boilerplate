@@ -7,13 +7,12 @@
 import ConfigService from "./service/ConfigService";
 import {parsePort} from "./util/network";
 
-const path = require('path');
-const log4js = require('log4js');
+require('./logger/configure-logger');
 
 function configure() {
   ConfigService.setConfig('PORT', parsePort(process.env.PORT));
   ConfigService.setConfig('SECRET', process.env.SECRET);
-  log4js.configure(path.resolve(__dirname, '../../config/log4js.json'));
+
 }
 
 export default configure;
