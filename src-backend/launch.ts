@@ -20,6 +20,22 @@ const path = require('path');
  */
 function launch(): void {
   const app = express();
+  configureApp(app);
+
+  app.use('/', router);
+  app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
+  app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
+    Logger.error(err);
+    res.status(500).send(err.message);
+  });
+
+  const port = ConfigService.getConfig('PORT');
+  app.listen(port, ()=>{
+    Logger.info(`Application listening on port: ${port}`);
+  }).on('close', Logger.shutdown);
+}
+
+function configureApp(app) {
   app.set('trust proxy', true);
   app.disable('x-powered-by');
 
@@ -44,18 +60,6 @@ function launch(): void {
     });
     next();
   });
-
-  app.use('/', router);
-  app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
-  app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
-    Logger.error(err);
-    res.status(500).send(err.message);
-  });
-
-  const port = ConfigService.getConfig('PORT');
-  app.listen(port, ()=>{
-    Logger.info(`Application listening on port: ${port}`);
-  }).on('close', Logger.shutdown);
 }
 
 export default launch;
