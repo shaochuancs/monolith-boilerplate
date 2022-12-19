@@ -5,6 +5,12 @@
 # monolith-boilerplate
 Monolithic web application boilerplate
 
+## Build
+`npm run build`
+
+## Launch
+`npm start`
+
 ## Launch in production
 1. Install pm2 globally (if not yet): `npm install -g pm2`
 2. Install pm2-intercom to support logger in cluster mode: `pm2 install pm2-intercom`
