@@ -8,7 +8,7 @@ import {Outlet, Link} from 'react-router-dom';
 
 const React = require('react');
 
-export default function Root() {
+export default function Framework() {
   return (
     <>
       <div className='menu'>

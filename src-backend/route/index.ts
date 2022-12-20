@@ -8,8 +8,10 @@ import {Request, Response, Router} from "express";
 
 const router = Router();
 
-router.get('/app*', (req: Request, res: Response) => {
-  res.render('index', {layout: false});
+router.get('/', (req: Request, res: Response) => {
+  res.json({
+    message: 'example'
+  });
 });
 
 export default router;
