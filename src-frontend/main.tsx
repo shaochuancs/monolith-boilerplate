@@ -5,18 +5,28 @@
 'use strict';
 
 import {createRoot} from "react-dom/client";
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+import ErrorPage from "./ErrorPage";
+import Item from "./route/Item";
+import Root from './route/Root';
+
 
 const React = require('react');
 
-class App extends React.Component {
-  render() {
-    return <div>Hello World!</div>;
-  }
-}
+const router = createBrowserRouter([{
+    path: '/app',
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [{
+      path: 'item/:itemId',
+      element: <Item />
+    }]
+  }]);
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

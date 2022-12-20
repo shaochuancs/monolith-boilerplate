@@ -26,6 +26,7 @@ module.exports = {
   },
   output: {
     filename: 'static/[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist/view')
+    path: path.resolve(__dirname, 'dist/view'),
+    publicPath: '/'
   }
 };
