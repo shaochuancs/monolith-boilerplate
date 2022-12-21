@@ -12,7 +12,6 @@ require('./logger/configure-logger');
 function configure() {
   ConfigService.setConfig('PORT', parsePort(process.env.PORT));
   ConfigService.setConfig('SECRET', process.env.SECRET);
-
 }
 
 export default configure;

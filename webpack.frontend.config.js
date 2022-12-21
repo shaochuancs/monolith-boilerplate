@@ -1,4 +1,5 @@
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -19,6 +20,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.handlebars',
       template: 'src-backend/view/index.handlebars'
+    }),
+    new CopyPlugin({
+      patterns: [{
+        from: 'src-frontend/public', to: 'public'
+      }]
     })
   ],
   resolve: {
@@ -26,6 +32,7 @@ module.exports = {
   },
   output: {
     filename: 'static/[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist/view')
+    path: path.resolve(__dirname, 'dist/view'),
+    publicPath: '/'
   }
 };

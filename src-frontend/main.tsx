@@ -4,19 +4,16 @@
 
 'use strict';
 
-import {createRoot} from "react-dom/client";
+import {createRoot} from 'react-dom/client';
+import {RouterProvider} from 'react-router-dom';
+
+import router from './router';
 
 const React = require('react');
-
-class App extends React.Component {
-  render() {
-    return <div>Hello World!</div>;
-  }
-}
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
