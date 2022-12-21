@@ -24,27 +24,7 @@ const path = require('path');
 function launch(): void {
   const app = express();
   configureApp(app);
-
-  app.use('/app/s', expressjwt({
-    secret: app.get('SECRET'),
-    algorithms: ['HS256'],
-    getToken: (req)=>{
-      return req.cookies.token || null;
-    }}));
-  app.get('/app*', (req, res) => {
-    res.render('index', {layout: false});
-  });
-  app.use('/api', api);
-  app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
-  app.use(express.static(path.resolve(__dirname, '../view/public'), {'maxAge': '7d'}));
-  app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
-    Logger.error(err);
-    if (err.status === 401) {
-      res.redirect('/app/login');
-    } else {
-      res.status(500).send(err.message);
-    }
-  });
+  configureRoute(app);
 
   const port = ConfigService.getConfig('PORT');
   app.listen(port, ()=>{
@@ -80,6 +60,29 @@ function configureApp(app) {
       Logger.info(generateAccessRecord(req, res, new Date()), Logger.CATEGORY.HTTP);
     });
     next();
+  });
+}
+
+function configureRoute(app) {
+  app.use('/app/s', expressjwt({
+    secret: app.get('SECRET'),
+    algorithms: ['HS256'],
+    getToken: (req)=>{
+      return req.cookies.token || null;
+    }}));
+  app.get('/app*', (req, res) => {
+    res.render('index', {layout: false});
+  });
+  app.use('/api', api);
+  app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
+  app.use(express.static(path.resolve(__dirname, '../view/public'), {'maxAge': '7d'}));
+  app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
+    Logger.error(err);
+    if (err.status === 401) {
+      res.redirect('/app/login');
+    } else {
+      res.status(500).send(err.message);
+    }
   });
 }
 
