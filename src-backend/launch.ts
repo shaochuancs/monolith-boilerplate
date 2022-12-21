@@ -8,11 +8,14 @@ import { engine } from 'express-handlebars';
 
 import Logger from './logger/Logger';
 import ConfigService from "./service/ConfigService";
-import router from "./route";
+import api from "./api";
 import {generateAccessRecord} from "./util/network";
 
+const bodyParser = require('body-parser');
 const compression = require('compression');
+const cookieParser = require('cookie-parser');
 const express = require('express');
+const {expressjwt} = require('express-jwt');
 const path = require('path');
 
 /**
@@ -22,15 +25,25 @@ function launch(): void {
   const app = express();
   configureApp(app);
 
+  app.use('/app/s', expressjwt({
+    secret: app.get('SECRET'),
+    algorithms: ['HS256'],
+    getToken: (req)=>{
+      return req.cookies.token || null;
+    }}));
   app.get('/app*', (req, res) => {
     res.render('index', {layout: false});
   });
-  app.use('/api', router);
+  app.use('/api', api);
   app.use('/static', express.static(path.resolve(__dirname, '../view/static'), {'maxAge': '7d'}));
   app.use(express.static(path.resolve(__dirname, '../view/public'), {'maxAge': '7d'}));
   app.use(function (err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
     Logger.error(err);
-    res.status(500).send(err.message);
+    if (err.status === 401) {
+      res.redirect('/app/login');
+    } else {
+      res.status(500).send(err.message);
+    }
   });
 
   const port = ConfigService.getConfig('PORT');
@@ -40,6 +53,7 @@ function launch(): void {
 }
 
 function configureApp(app) {
+  app.set('SECRET', ConfigService.getConfig('SECRET'));
   app.set('trust proxy', true);
   app.disable('x-powered-by');
 
@@ -47,7 +61,10 @@ function configureApp(app) {
   app.set('view engine', 'handlebars');
   app.set('views', path.resolve(__dirname, '../view'));
 
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: false}));
   app.use(compression());
+  app.use(cookieParser());
   app.use((req, res, next)=>{
     res.set({
       'X-XSS-Protection': '1; mode=block',

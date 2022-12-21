@@ -5,7 +5,7 @@
 'use strict';
 
 import {createRoot} from 'react-dom/client';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {RouterProvider} from 'react-router-dom';
 
 import router from './router';
 
