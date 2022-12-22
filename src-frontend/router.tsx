@@ -8,7 +8,8 @@ import {createBrowserRouter} from "react-router-dom";
 
 import ErrorPage from './component/ErrorPage';
 import Framework from './component/Framework';
-import Item from './component/Item';
+import ItemX from './component/ItemX';
+import ItemY from './component/ItemY';
 import Login from './component/Login';
 
 const React = require('react');
@@ -18,8 +19,11 @@ const router = createBrowserRouter([{
   element: <Framework />,
   errorElement: <ErrorPage />,
   children: [{
-    path: 'item/:itemId',
-    element: <Item />
+    path: 'itemX',
+    element: <ItemX />
+  }, {
+    path: 'itemY',
+    element: <ItemY />
   }]
 }, {
   path: '/app/login',

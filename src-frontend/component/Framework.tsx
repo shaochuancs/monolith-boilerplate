@@ -15,8 +15,8 @@ export default function Framework() {
         <h1>Menu</h1>
         <nav>
           <ul>
-            <li><Link to='item/1'>Item 1</Link></li>
-            <li><Link to='item/2'>Item 2</Link></li>
+            <li><Link to='itemX'>Item X</Link></li>
+            <li><Link to='itemY'>Item Y</Link></li>
           </ul>
         </nav>
       </div>
