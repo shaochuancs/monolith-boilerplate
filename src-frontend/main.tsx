@@ -5,15 +5,19 @@
 'use strict';
 
 import {createRoot} from 'react-dom/client';
+import {Provider} from 'react-redux';
 import {RouterProvider} from 'react-router-dom';
 
 import router from './router';
+import store from './store';
 
 const React = require('react');
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

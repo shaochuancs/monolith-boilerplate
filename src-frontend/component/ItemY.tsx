@@ -4,9 +4,15 @@
 
 'use strict';
 
+import {Component} from 'react';
+
 const React = require('react');
 
-class ItemY extends React.Component {
+type State = {
+  name: string
+};
+
+class ItemY extends Component<object, State> {
   constructor(props) {
     super(props);
     this.state = {

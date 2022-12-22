@@ -8,6 +8,8 @@ import {Outlet, Link} from 'react-router-dom';
 
 const React = require('react');
 
+import Counter from './counter/Counter';
+
 export default function Framework() {
   return (
     <>
@@ -21,6 +23,7 @@ export default function Framework() {
         </nav>
       </div>
       <div className='content'><Outlet /></div>
+      <Counter />
     </>
   );
 }
