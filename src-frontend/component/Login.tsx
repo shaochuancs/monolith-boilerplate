@@ -5,11 +5,16 @@
 'use strict';
 
 import axios from 'axios';
-import {ChangeEvent, FormEvent} from 'react';
+import {ChangeEvent, Component, FormEvent} from 'react';
 
 const React = require('react');
 
-class Login extends React.Component {
+type State = {
+  username: string,
+  password: string
+};
+
+class Login extends Component<object, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,13 +23,13 @@ class Login extends React.Component {
     };
   }
 
-  onUsernameChange(e: ChangeEvent) {
+  onUsernameChange(e: ChangeEvent<HTMLInputElement>) {
     this.setState({
       username: e.target.value
     });
   }
 
-  onPasswordChange(e: ChangeEvent) {
+  onPasswordChange(e: ChangeEvent<HTMLInputElement>) {
     this.setState({
       password: e.target.value
     });
@@ -44,7 +49,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form noValidate='noValidate' onSubmit={(e)=>this.onSubmit(e)}>
+      <form onSubmit={(e)=>this.onSubmit(e)}>
         <input
           required
           placeholder='Username'

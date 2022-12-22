@@ -12,6 +12,10 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
+    }, {
+      test: /\.jsx?$/,
+      use: 'babel-loader',
+      exclude: /node_modules/
     }]
   },
   plugins: [
@@ -28,7 +32,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', 'jsx', 'js']
+    extensions: ['.tsx', '.ts', '.jsx', '.js']
   },
   output: {
     filename: 'static/[contenthash].bundle.js',
