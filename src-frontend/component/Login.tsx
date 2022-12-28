@@ -49,7 +49,7 @@ class Login extends Component<object, State> {
 
   render() {
     return (
-      <form onSubmit={(e)=>this.onSubmit(e)}>
+      <form noValidate onSubmit={(e)=>this.onSubmit(e)}>
         <input
           required
           placeholder='Username'
