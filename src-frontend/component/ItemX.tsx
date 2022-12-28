@@ -30,7 +30,7 @@ class ItemX extends Component<object, State> {
 
   render() {
     return (
-      <div><h1>Welcome X, item: {this.state.name}!</h1></div>
+      <div><h1>Welcome Xacc, item: {this.state.name}!</h1></div>
     );
   }
 }

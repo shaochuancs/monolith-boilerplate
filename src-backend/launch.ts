@@ -18,6 +18,8 @@ const express = require('express');
 const {expressjwt} = require('express-jwt');
 const path = require('path');
 
+const webpackFrontendConfig = require('../webpack.frontend.config');
+
 /**
  * Launch server
  */
@@ -37,7 +39,6 @@ function launch(): void {
 
 function configureHotReload(app) {
   const webpack = require('webpack');
-  const webpackFrontendConfig = require(path.resolve(__dirname, '../../webpack.frontend.config'));
   const compiler = webpack(webpackFrontendConfig);
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: webpackFrontendConfig.output.publicPath
@@ -63,6 +64,7 @@ function configureApp(app) {
       'X-XSS-Protection': '1; mode=block',
       'Expect-CT': 'max-age=86400',
       'Content-Security-Policy': 'default-src \'self\' https:;' +
+                                 'font-src \'self\' https: data:;' +
                                  'script-src \'self\' \'unsafe-eval\';' +
                                  'style-src \'self\' \'unsafe-inline\';'
     });
