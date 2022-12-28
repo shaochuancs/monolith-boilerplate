@@ -3,9 +3,31 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+
+const plugins = [
+  new CleanWebpackPlugin(),
+  new ESLintWebpackPlugin({extensions: ['ts', 'js']}),
+  new HtmlWebpackPlugin({
+    filename: 'index.handlebars',
+    template: 'src-backend/view/index.handlebars'
+  }),
+  new CopyPlugin({
+    patterns: [{
+      from: 'src-frontend/public', to: 'public'
+    }]
+  }),
+];
+const entry = {
+  main: ['./src-frontend/main.tsx']
+};
+if (process.env.NODE_ENV === 'development') {
+  plugins.push(new webpack.HotModuleReplacementPlugin());
+  entry.main.push('webpack-hot-middleware/client')
+}
 
 module.exports = {
-  entry: './src-frontend/main.tsx',
+  entry: entry,
   mode: process.env.NODE_ENV,
   module: {
     rules: [{
@@ -18,19 +40,7 @@ module.exports = {
       exclude: /node_modules/
     }]
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new ESLintWebpackPlugin({extensions: ['ts', 'js']}),
-    new HtmlWebpackPlugin({
-      filename: 'index.handlebars',
-      template: 'src-backend/view/index.handlebars'
-    }),
-    new CopyPlugin({
-      patterns: [{
-        from: 'src-frontend/public', to: 'public'
-      }]
-    })
-  ],
+  plugins: plugins,
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js']
   },

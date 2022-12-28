@@ -23,6 +23,9 @@ const path = require('path');
  */
 function launch(): void {
   const app = express();
+  if (process.env.NODE_ENV === 'development') {
+    configureHotReload(app);
+  }
   configureApp(app);
   configureRoute(app);
 
@@ -30,6 +33,16 @@ function launch(): void {
   app.listen(port, ()=>{
     Logger.info(`Application listening on port: ${port}`);
   }).on('close', Logger.shutdown);
+}
+
+function configureHotReload(app) {
+  const webpack = require('webpack');
+  const webpackFrontendConfig = require(path.resolve(__dirname, '../../webpack.frontend.config'));
+  const compiler = webpack(webpackFrontendConfig);
+  app.use(require('webpack-dev-middleware')(compiler, {
+    publicPath: webpackFrontendConfig.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
 }
 
 function configureApp(app) {
