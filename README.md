@@ -15,3 +15,6 @@ Monolithic web application boilerplate
 1. Install pm2 globally (if not yet): `npm install -g pm2`
 2. Install pm2-intercom to support logger in cluster mode: `pm2 install pm2-intercom`
 3. Start app: `pm2 start dist/server/bundle.js --name app -i max`
+
+## TODO
+1. [react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin) is not stable yet, waiting for its v1 release.

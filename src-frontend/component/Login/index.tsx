@@ -7,6 +7,8 @@
 import axios from 'axios';
 import {ChangeEvent, Component, FormEvent} from 'react';
 
+import './index.less';
+
 const React = require('react');
 
 type State = {
@@ -49,7 +51,7 @@ class Login extends Component<object, State> {
 
   render() {
     return (
-      <form noValidate onSubmit={(e)=>this.onSubmit(e)}>
+      <form className='login-form' noValidate onSubmit={(e)=>this.onSubmit(e)}>
         <input
           required
           placeholder='Username'

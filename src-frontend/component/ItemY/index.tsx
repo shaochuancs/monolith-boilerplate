@@ -6,6 +6,10 @@
 
 import {Component} from 'react';
 
+import Counter from '../Counter';
+
+import './index.less';
+
 const React = require('react');
 
 type State = {
@@ -30,7 +34,10 @@ class ItemY extends Component<object, State> {
 
   render() {
     return (
-      <div><h1>Welcome, item: {this.state.name}!</h1></div>
+      <div className='y-wrapper'>
+        <h1>Welcome Y, item: {this.state.name}!</h1>
+        <Counter />
+      </div>
     );
   }
 }

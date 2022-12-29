@@ -11,6 +11,8 @@ import {RouterProvider} from 'react-router-dom';
 import router from './router';
 import store from './store';
 
+import './main.less';
+
 const React = require('react');
 
 const root = createRoot(document.getElementById('root'));

@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const ReactRefreshTypeScript = require('react-refresh-typescript');6
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -23,17 +23,17 @@ const plugins = [
 const entry = {
   main: ['./src-frontend/main.tsx']
 };
-let babelLoaderVal = 'babel-loader';
-let tsLoaderVal = 'ts-loader';
+let babelLoader = 'babel-loader';
+let tsLoader = 'ts-loader';
 if (process.env.NODE_ENV === 'development') {
   plugins.push(new webpack.HotModuleReplacementPlugin());
   plugins.push(new ReactRefreshWebpackPlugin());
   entry.main.push('webpack-hot-middleware/client');
-  babelLoaderVal = [{
+  babelLoader = [{
     loader: require.resolve('babel-loader'),
     options: {plugins: [require.resolve('react-refresh/babel')]}
   }];
-  tsLoaderVal = [{
+  tsLoader = [{
     loader: require.resolve('ts-loader'),
     options: {
       getCustomTransformers: ()=>({before: [ReactRefreshTypeScript()]}),
@@ -47,12 +47,15 @@ module.exports = {
   module: {
     rules: [{
         test: /\.tsx?$/,
-        use: tsLoaderVal,
+        use: tsLoader,
         exclude: /node_modules/
     }, {
       test: /\.jsx?$/,
-      use: babelLoaderVal,
+      use: babelLoader,
       exclude: /node_modules/
+    }, {
+      test: /\.less$/,
+      use: ['style-loader', 'css-loader', 'less-loader']
     }]
   },
   plugins: plugins,
