@@ -7,8 +7,8 @@
 import { engine } from 'express-handlebars';
 
 import Logger from './logger/Logger';
-import ConfigService from "./service/ConfigService";
 import api from "./api";
+import ServiceConfig from './config/ServiceConfig';
 import {generateAccessRecord} from "./util/network";
 
 const bodyParser = require('body-parser');
@@ -31,7 +31,7 @@ function launch(): void {
   configureApp(app);
   configureRoute(app);
 
-  const port = ConfigService.getConfig('PORT');
+  const port = ServiceConfig.get('PORT');
   app.listen(port, ()=>{
     Logger.info(`Application listening on port: ${port}`);
   }).on('close', Logger.shutdown);
@@ -47,7 +47,7 @@ function configureHotReload(app) {
 }
 
 function configureApp(app) {
-  app.set('SECRET', ConfigService.getConfig('SECRET'));
+  app.set('SECRET', ServiceConfig.get('SECRET'));
   app.set('trust proxy', true);
   app.disable('x-powered-by');
 
