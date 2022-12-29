@@ -6,6 +6,8 @@
 
 import {Component} from 'react';
 
+import './ItemX.less';
+
 const React = require('react');
 
 type State = {
@@ -30,7 +32,7 @@ class ItemX extends Component<object, State> {
 
   render() {
     return (
-      <div><h1>Welcome Xacc, item: {this.state.name}!</h1></div>
+      <div><h1>Welcome <span>Xacc</span>, item: {this.state.name}!</h1></div>
     );
   }
 }
