@@ -6,15 +6,15 @@
 
 import {Outlet, Link} from 'react-router-dom';
 
-const React = require('react');
+import './index.less';
 
-import Counter from './counter/Counter';
+const React = require('react');
 
 export default function Framework() {
   return (
-    <>
-      <div className='menu'>
-        <h1>Menu</h1>
+    <div className='framework'>
+      <div className='menu pull-left'>
+        <h2>Menu</h2>
         <nav>
           <ul>
             <li><Link to='itemX'>Item X</Link></li>
@@ -22,8 +22,7 @@ export default function Framework() {
           </ul>
         </nav>
       </div>
-      <div className='content'><Outlet /></div>
-      <Counter />
-    </>
+      <div className='content pull-left'><Outlet /></div>
+    </div>
   );
 }

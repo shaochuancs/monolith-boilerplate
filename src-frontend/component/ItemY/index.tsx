@@ -1,12 +1,14 @@
 /**
- * Created by cshao on 2022/12/20.
+ * Created by cshao on 2022/12/21.
  */
 
 'use strict';
 
 import {Component} from 'react';
 
-import './ItemX.less';
+import Counter from '../Counter';
+
+import './index.less';
 
 const React = require('react');
 
@@ -14,7 +16,7 @@ type State = {
   name: string
 };
 
-class ItemX extends Component<object, State> {
+class ItemY extends Component<object, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,16 +27,19 @@ class ItemX extends Component<object, State> {
   componentDidMount() {
     setTimeout(()=>{
       this.setState({
-        name: 'X'+Math.random()
+        name: 'Y'+Math.random()
       });
     }, 2000);
   }
 
   render() {
     return (
-      <div><h1>Welcome <span>Xacc</span>, item: {this.state.name}!</h1></div>
+      <div className='y-wrapper'>
+        <h1>Welcome Y, item: {this.state.name}!</h1>
+        <Counter />
+      </div>
     );
   }
 }
 
-export default ItemX;
+export default ItemY;
